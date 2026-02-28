@@ -21,20 +21,42 @@ public partial class AddEditBookWindow : Window
     private void LoadData()
     {
         using var db = DbContextFactory.Create();
-        AuthorComboBox.ItemsSource = db.Authors.OrderBy(a => a.LastName).ToList();
-        GenreComboBox.ItemsSource = db.Genres.OrderBy(g => g.Name).ToList();
+
+        var authors = db.Authors.OrderBy(a => a.LastName).ToList();
+        var genres = db.Genres.OrderBy(g => g.Name).ToList();
+
+        AuthorComboBox.ItemsSource = authors;
+        GenreComboBox.ItemsSource = genres;
+
+        var hasAuthors = authors.Count > 0;
+        var hasGenres = genres.Count > 0;
+
+        SaveButton.IsEnabled = hasAuthors && hasGenres;
+
+        if (!hasAuthors || !hasGenres)
+        {
+            MessageBox.Show(
+                "Нельзя добавить книгу, так как в базе нет авторов или жанров.\n" +
+                "Сначала добавьте хотя бы одного автора и один жанр через соответствующие окна.",
+                "Нет данных для выбора",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+        }
 
         if (_bookId.HasValue)
         {
-            var book = db.Books.Include(b => b.Author).Include(b => b.Genre).FirstOrDefault(b => b.Id == _bookId.Value);
+            var book = db.Books.Include(b => b.Author).Include(b => b.Genre)
+                .FirstOrDefault(b => b.Id == _bookId.Value);
             if (book != null)
             {
                 TitleTextBox.Text = book.Title;
                 YearTextBox.Text = book.PublishYear.ToString();
                 IsbnTextBox.Text = book.ISBN ?? "";
                 QuantityTextBox.Text = book.QuantityInStock.ToString();
-                AuthorComboBox.SelectedItem = AuthorComboBox.Items.Cast<Entities.Author>().FirstOrDefault(a => a.Id == book.AuthorId);
-                GenreComboBox.SelectedItem = GenreComboBox.Items.Cast<Entities.Genre>().FirstOrDefault(g => g.Id == book.GenreId);
+                AuthorComboBox.SelectedItem = AuthorComboBox.Items.Cast<Entities.Author>()
+                    .FirstOrDefault(a => a.Id == book.AuthorId);
+                GenreComboBox.SelectedItem = GenreComboBox.Items.Cast<Entities.Genre>()
+                    .FirstOrDefault(g => g.Id == book.GenreId);
             }
         }
     }

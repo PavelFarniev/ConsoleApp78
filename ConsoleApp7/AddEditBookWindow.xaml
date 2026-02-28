@@ -40,7 +40,7 @@
         <TextBox Grid.Row="11" x:Name="QuantityTextBox" Margin="0,0,0,20" Padding="4,2"/>
 
         <StackPanel Grid.Row="12" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Сохранить" Padding="20,8" Margin="0,0,10,0" Click="Save_Click" IsDefault="True"/>
+            <Button x:Name="SaveButton" Content="Сохранить" Padding="20,8" Margin="0,0,10,0" Click="Save_Click" IsDefault="True"/>
             <Button Content="Отмена" Padding="20,8" Click="Cancel_Click" IsCancel="True"/>
         </StackPanel>
     </Grid>
