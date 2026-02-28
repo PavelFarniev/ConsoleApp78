@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\ПКС С# A\ConsoleApp7\obj\Debug\net10.0-windows\
+/Users/artemfarniev2013/Downloads/ПКС С# A/ConsoleApp7/obj/Debug/net10.0-windows/
 ConsoleApp7
 none
 false
 TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NET10_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-D:\ПКС С# A\ConsoleApp7\App.xaml
+/Users/artemfarniev2013/Downloads/ПКС С# A/ConsoleApp7/App.xaml
 6457911728
-46-1019822986
-14-1243813500
-2241969358847
+461967634476
+14-1545282285
+223-229495085
 AddEditBookWindow.xaml;AuthorEditWindow.xaml;AuthorsWindow.xaml;GenreEditWindow.xaml;GenresWindow.xaml;MainWindow.xaml;
 
 False
